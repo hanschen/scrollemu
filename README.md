@@ -1,7 +1,7 @@
 SCROLLEMU
 =========
 
-*scrollemu* is a simple utility that allows you to scroll by holding down a
+**scrollemu** is a simple utility that allows you to scroll by holding down a
 keyboard modifier key and move your mouse cursor. This is especially nice if
 you use a trackball or a pointing stick, but it works for all pointing devices.
 
@@ -54,7 +54,7 @@ If scrolling acts weird, try to disable `ACCELERATION`.
 Known issues and future plans
 -----------------------------
 
-*Mouse cursor flickers when scrolling.*
+**Mouse cursor flickers when scrolling.**
 No idea how to solve this issue, any solutions would be greatly appreciated.
 
 The current script works well for my needs and I don't plan to put much effort
