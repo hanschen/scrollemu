@@ -54,6 +54,10 @@ If scrolling acts weird, try to disable `ACCELERATION`.
 Known issues and future plans
 -----------------------------
 
+**Keyboard key is still interpreted as held down.**
+This is an issue if e.g. Ctrl is used as the scroll key, as many applications
+bind Ctrl+scroll to zoom in/out.
+
 **Mouse cursor flickers when scrolling.**
 No idea how to solve this issue, any solutions would be greatly appreciated.
 
