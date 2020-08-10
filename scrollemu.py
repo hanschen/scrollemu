@@ -4,7 +4,8 @@ down a keyboard modifier key."""
 import math
 
 from pynput import mouse, keyboard
-from pynput.keyboard import Key
+from pynput.keyboard import KeyCode
+from pynput.mouse import Button
 
 
 #
@@ -22,7 +23,7 @@ from pynput.keyboard import Key
 # Add _l or _r to the end to specify only the left or right key.
 #
 # Default: Key.cmd_l
-SCROLL_KEY = Key.cmd_l
+SCROLL_KEY = Button.button18
 
 # Number of lines to scroll per pixels moved.
 # Can be smaller than 1 but must be larger than 0.
@@ -112,6 +113,17 @@ class ScrollEmu(object):
         if key == SCROLL_KEY:
             self.scroll_on = False
 
+    def on_mousepress(self, x, y, button, pressed):
+        if pressed and self.scroll_on:
+            self.scroll_on = False
+            return
+
+        if pressed and button == SCROLL_KEY:
+            self.scroll_on = True
+            self.mouse_displacement_x = 0
+            self.mouse_displacement_y = 0
+            self.mouse_lock_position = self.mouse.position
+
     def scroll_lines(self, displacement, invert=False):
         """Return number of lines to scroll based on displacement."""
         scroll_lines = max([SENSITIVITY, 1])
@@ -141,9 +153,9 @@ class ScrollEmu(object):
         self.mouse.scroll(0, scroll_lines)
 
     def run(self):
-        key_listener = keyboard.Listener(on_press=self.on_press,
-                                         on_release=self.on_release)
-        key_listener.start()
+        mouse_listener = mouse.Listener(on_click=self.on_mousepress)
+        mouse_listener.start()
+
         with mouse.Listener(on_move=self.on_move) as listener:
             listener.join()
 
