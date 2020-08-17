@@ -29,7 +29,7 @@ SCROLL_KEY = Button.button18
 # Can be smaller than 1 but must be larger than 0.
 #
 # Default: 0.05
-SENSITIVITY = 0.05
+SENSITIVITY = 0.01
 
 # Enable scrolling in vertical direction.
 #
